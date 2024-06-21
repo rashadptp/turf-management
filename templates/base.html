@@ -1,0 +1,171 @@
+<!doctype html>
+{%load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> {% block title %} {% endblock title %} RGC Turf</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM6MS3rZlN1qzdf6Vz/Yo5qN6I6kPoM0IGN6fov" crossorigin="anonymous">
+    <style>
+      * {
+        text-decoration: none;
+      }
+      .nav-logo {
+        font-size: 25px;
+      }
+      .nav-link {
+        font-size: 20px;
+        padding: 8px 16px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+      .nav-link:hover {
+        background-color: #555;
+        color: #fff;
+        border-radius: 5px;
+      }
+      .nav-button {
+        color: snow;
+        font-size: 18px; 
+      }
+      .navbar {
+        justify-content: center;
+      }
+      .navbar-nav {
+        text-align: center;
+      }
+      .dashboard-link {
+        margin-right: auto;
+      }
+      .fa-tachometer-alt {
+        color: #fff; /* Ensure the icon color is white for visibility */
+      }
+
+      .dashboard-icon, .signup-icon {
+        width: 25px;  /* Adjust the size as needed */
+        height: 25px; /* Adjust the size as needed */
+      }
+      /* .signup-icon-container {
+        
+        width:50px
+        align-items: center;
+      } */
+      .signup-icon-container img {
+        margin-right: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        {% load static %} <img src="{% static 'logo1.png' %}" alt="Logo" width="45" height="50" class="d-inline-block align-text-top me-md-2">
+        <div class='nav-logo'>
+          <a class="navbar-brand" href="/">RGC</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          {% if user.is_authenticated %}
+          <a class="nav-link dashboard-link" href="/dashbord">
+            <img src="{% static 'footballsticker.png' %}" alt="Dashboard" class="dashboard-icon">
+          </a>
+          {% endif %}
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/about_us">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/pricing">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/equipment">Offers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/ratings">Reviews</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link active" href="/booking">Book a slot</a>
+            </li>
+            {% if user.is_superuser %}
+            <li class="nav-item">
+              <a class="nav-link active" href="/all_bookings">View Bookings</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link active" href="/history">My bookings</a>
+            </li>
+            {% endif %}
+            {% comment %} {% else %}
+            <li class="nav-item">
+              <a class="nav-link active" href="/contact_us">Contact Us</a>
+            </li> {% endcomment %}
+            {% endif %}
+          </ul>
+          <div class="nav-button">
+            {% if user.is_authenticated %}
+            <button type="submit" class="btn btn-outline-light me-md-2"><a href='/Logout'>Logout</a></button>
+            {% else %}
+            <button type="button" class="btn btn-outline-light me-md-2"><a class="nav-button " href="/Login">Login</a></button>
+            <button type="button" class="btn btn-outline-light signup-icon-container">
+              <a class="signup-icon-container" href="/SignUp">
+                <img src="{% static 'signup.png' %}" alt="SignUp" class="signup-icon">
+              </a>
+            </button>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    {% block body %}{% endblock body %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+
+
+  <div class="content">
+    {% block content %}
+    {% endblock content %}
+  </div>
+
+  {% block picture_section %}
+    <!-- Default empty block for picture section -->
+  {% endblock picture_section %}
+  <style>
+    .picture-section {
+      background-color: #000;
+        text-align: center; /* Center the image horizontally */
+        padding: 50px 0; /* Adjust padding as needed */
+      }
+      
+      .picture-section img {
+        max-width: 100%; /* Ensure the image does not exceed its container width */
+        height: auto; /* Maintain aspect ratio */
+      }
+      
+</style>
+
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Contact Us</h5>
+          <p>Email: info@example.com</p>
+          <p>Phone: +123456789</p>
+        </div>
+        <div class="col-md-6 text-md-right">
+          <h5>Follow Us</h5>
+          <p>Connect with us on social media:</p>
+          <!-- Add your social media icons or links here -->
+        </div>
+      </div>
+    </div>
+  </footer>
+</html>

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About Us{% endblock %}
+{% block body %}
+
+<style>
+    /* General Styling */
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container-fluid {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    /* About Section Styling */
+    .about-section {
+        background-color: #ffffff;
+        padding: 50px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-section h2 {
+        margin-bottom: 30px;
+    }
+
+    .about-content {
+        margin-bottom: 30px;
+    }
+
+    .about-content p {
+        font-size: 1.1rem;
+    }
+
+    .location-map {
+        margin-bottom: 30px;
+    }
+
+    .social-links {
+        margin-top: 20px;
+    }
+
+    .social-links a {
+        display: inline-block;
+        margin-right: 10px;
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+        color: #0056b3;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="about-section">
+        <div class="text-center">
+            <h2>About Us</h2>
+        </div>
+        <div class="about-content">
+            <p>Welcome to RGC Turf, your ultimate destination for recreation and relaxation. Located in the heart of [City/Region], we offer a unique blend of services including a state-of-the-art turf ground, cozy café, and thrilling play stations. Whether you're here to play your favorite sport, unwind with friends, or simply enjoy a cup of coffee, our vibrant community welcomes you with open arms.</p>
+        </div>
+        <div class="location-map">
+            <!-- Replace with your actual map embed code or iframe -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3921.280862662648!2dYOUR_LONGITUDE_HERE!3dYOUR_LATITUDE_HERE!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDU3JzIyLjMiTiA0wrAzNicxNi4yIlc!5e0!3m2!1sen!2suk!4v1624199869845!5m2!1sen!2suk" 
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="social-links text-center">
+            <a href="https://www.instagram.com/your_instagram_handle/" target="_blank">Instagram</a>
+            <!-- Add more social links as needed -->
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
